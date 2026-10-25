@@ -1,0 +1,202 @@
+{
+  "roundNo": 1,
+  "slots": [
+    {
+      "slotId": 1,
+      "interviewerId": 7,
+      "start": "2026-11-03T09:00:00Z",
+      "end": "2026-11-03T09:30:00Z",
+      "roomId": 1,
+      "skillTags": [
+        "Coding"
+      ]
+    },
+    {
+      "slotId": 2,
+      "interviewerId": 7,
+      "start": "2026-11-03T09:30:00Z",
+      "end": "2026-11-03T10:00:00Z",
+      "roomId": 1,
+      "skillTags": [
+        "Coding"
+      ]
+    },
+    {
+      "slotId": 3,
+      "interviewerId": 7,
+      "start": "2026-11-03T10:00:00Z",
+      "end": "2026-11-03T10:30:00Z",
+      "roomId": 1,
+      "skillTags": [
+        "Coding"
+      ]
+    },
+    {
+      "slotId": 4,
+      "interviewerId": 7,
+      "start": "2026-11-03T10:30:00Z",
+      "end": "2026-11-03T11:00:00Z",
+      "roomId": 1,
+      "skillTags": [
+        "Coding"
+      ]
+    },
+    {
+      "slotId": 5,
+      "interviewerId": 8,
+      "start": "2026-11-03T09:00:00Z",
+      "end": "2026-11-03T09:30:00Z",
+      "roomId": 2,
+      "skillTags": [
+        "Coding"
+      ]
+    },
+    {
+      "slotId": 6,
+      "interviewerId": 8,
+      "start": "2026-11-03T09:30:00Z",
+      "end": "2026-11-03T10:00:00Z",
+      "roomId": 2,
+      "skillTags": [
+        "Coding"
+      ]
+    },
+    {
+      "slotId": 7,
+      "interviewerId": 8,
+      "start": "2026-11-03T10:00:00Z",
+      "end": "2026-11-03T10:30:00Z",
+      "roomId": 2,
+      "skillTags": [
+        "Coding"
+      ]
+    },
+    {
+      "slotId": 8,
+      "interviewerId": 8,
+      "start": "2026-11-03T10:30:00Z",
+      "end": "2026-11-03T11:00:00Z",
+      "roomId": 2,
+      "skillTags": [
+        "Coding"
+      ]
+    }
+  ],
+  "rooms": [
+    {
+      "roomId": 1
+    },
+    {
+      "roomId": 2
+    },
+    {
+      "roomId": 3
+    }
+  ],
+  "students": [
+    {
+      "studentId": 11,
+      "prefs": [
+        {
+          "slotId": 1,
+          "rank": 1
+        },
+        {
+          "slotId": 5,
+          "rank": 2
+        },
+        {
+          "slotId": 2,
+          "rank": 3
+        }
+      ]
+    },
+    {
+      "studentId": 12,
+      "prefs": [
+        {
+          "slotId": 1,
+          "rank": 1
+        },
+        {
+          "slotId": 2,
+          "rank": 2
+        },
+        {
+          "slotId": 3,
+          "rank": 3
+        }
+      ]
+    },
+    {
+      "studentId": 13,
+      "prefs": [
+        {
+          "slotId": 1,
+          "rank": 1
+        },
+        {
+          "slotId": 5,
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "studentId": 14,
+      "prefs": [
+        {
+          "slotId": 2,
+          "rank": 1
+        },
+        {
+          "slotId": 6,
+          "rank": 2
+        },
+        {
+          "slotId": 7,
+          "rank": 3
+        }
+      ]
+    },
+    {
+      "studentId": 15,
+      "prefs": [
+        {
+          "slotId": 3,
+          "rank": 1
+        },
+        {
+          "slotId": 7,
+          "rank": 2
+        },
+        {
+          "slotId": 4,
+          "rank": 3
+        }
+      ]
+    },
+    {
+      "studentId": 16,
+      "prefs": [
+        {
+          "slotId": 1,
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "studentId": 17,
+      "prefs": []
+    }
+  ],
+  "panelRequirements": {
+    "companyId": 3,
+    "requiredSkills": []
+  },
+  "weights": {
+    "rank1": 100,
+    "rank2": 60,
+    "rank3": 30,
+    "unmatchedPenalty": 1000
+  }
+}
