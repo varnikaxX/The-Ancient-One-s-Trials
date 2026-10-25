@@ -1,0 +1,180 @@
+{
+  "_note": "Section 4.4 solver I/O contract examples (FROZEN). strategy: SWAP_INTERVIEWER|NEXT_RANKED|NEAREST_FREE|UNRESOLVED; unmatched reasons: ALL_PREFERRED_SLOTS_TAKEN|NO_PREFERENCES|NO_FEASIBLE_SLOT",
+  "solve_batch": {
+    "input": {
+      "roundNo": 1,
+      "slots": [
+        {
+          "slotId": 1,
+          "interviewerId": 7,
+          "start": "2026-11-03T09:00:00Z",
+          "end": "2026-11-03T09:30:00Z",
+          "roomId": 2,
+          "skillTags": [
+            "Coding"
+          ]
+        }
+      ],
+      "rooms": [
+        {
+          "roomId": 2
+        }
+      ],
+      "students": [
+        {
+          "studentId": 11,
+          "prefs": [
+            {
+              "slotId": 1,
+              "rank": 1
+            },
+            {
+              "slotId": 4,
+              "rank": 2
+            }
+          ]
+        }
+      ],
+      "panelRequirements": {
+        "companyId": 3,
+        "requiredSkills": []
+      },
+      "weights": {
+        "rank1": 100,
+        "rank2": 60,
+        "rank3": 30,
+        "unmatchedPenalty": 1000
+      }
+    },
+    "output": {
+      "status": "OPTIMAL",
+      "objectiveValue": 3440,
+      "assignments": [
+        {
+          "studentId": 11,
+          "slotId": 1,
+          "rankGot": 1,
+          "interviewerIds": [
+            7
+          ],
+          "roomId": 2
+        }
+      ],
+      "unmatched": [
+        {
+          "studentId": 12,
+          "reason": "ALL_PREFERRED_SLOTS_TAKEN"
+        }
+      ],
+      "stats": {
+        "matched": 40,
+        "unmatched": 2,
+        "rank1": 30,
+        "rank2": 8,
+        "rank3": 2,
+        "wallTimeSec": 0.8
+      }
+    }
+  },
+  "reschedule": {
+    "input": {
+      "roundNo": 1,
+      "slots": [
+        {
+          "slotId": 1,
+          "interviewerId": 7,
+          "start": "2026-11-03T09:00:00Z",
+          "end": "2026-11-03T09:30:00Z",
+          "roomId": 2,
+          "skillTags": [
+            "Coding"
+          ]
+        }
+      ],
+      "rooms": [
+        {
+          "roomId": 2
+        }
+      ],
+      "students": [
+        {
+          "studentId": 11,
+          "prefs": [
+            {
+              "slotId": 1,
+              "rank": 1
+            },
+            {
+              "slotId": 4,
+              "rank": 2
+            }
+          ]
+        }
+      ],
+      "panelRequirements": {
+        "companyId": 3,
+        "requiredSkills": []
+      },
+      "weights": {
+        "rank1": 100,
+        "rank2": 60,
+        "rank3": 30,
+        "unmatchedPenalty": 1000
+      },
+      "currentInterviews": [
+        {
+          "interviewId": 5,
+          "studentId": 11,
+          "slotId": 1,
+          "interviewerIds": [
+            7
+          ],
+          "roomId": 2,
+          "roundNo": 1
+        }
+      ],
+      "cancelled": {
+        "interviewerId": 7,
+        "slotIds": [
+          1,
+          2
+        ]
+      },
+      "freeSlots": [
+        {
+          "slotId": 9,
+          "interviewerId": 8,
+          "start": "2026-11-03T09:00:00Z",
+          "end": "2026-11-03T09:30:00Z",
+          "roomId": 3,
+          "skillTags": [
+            "Coding"
+          ]
+        }
+      ],
+      "moveWeights": {
+        "movePenalty": 500,
+        "swapInterviewer": 50,
+        "nextRanked": 150,
+        "nearestSlot": 300
+      }
+    },
+    "output": {
+      "status": "FEASIBLE",
+      "moves": [
+        {
+          "interviewId": 5,
+          "studentId": 11,
+          "fromSlotId": 1,
+          "toSlotId": 9,
+          "strategy": "SWAP_INTERVIEWER",
+          "newInterviewerIds": [
+            8
+          ]
+        }
+      ],
+      "untouched": 0,
+      "unresolved": []
+    }
+  }
+}
