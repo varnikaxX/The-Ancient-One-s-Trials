@@ -368,5 +368,3 @@ On Windows, if `psql` asks for a password every time, set it for the session wit
 ```
 
 ---
-
-**Team SheCodes (ID-207):** Vaishnavi Baranwal (frontend), Varnika Rameshkumar (scheduling engine), Ishika Agarwal (backend and database).
