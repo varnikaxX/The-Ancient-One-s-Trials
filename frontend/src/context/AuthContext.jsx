@@ -26,7 +26,13 @@ export function AuthProvider({ children }) {
   };
   useEffect(() => { setOnUnauthorized(logout); }, []);
 
-  const login = async (email, password) => save(await api('POST', '/auth/login', { email, password }));
+  const login = async (email, password, expectedRole) => {
+    const data = await api('POST', '/auth/login', { email, password });
+    if (expectedRole && data.user.role !== expectedRole) {
+      throw Object.assign(new Error('Wrong gateway'), { code: 'WRONG_ROLE', role: data.user.role });
+    }
+    return save(data);
+  };
   const register = async (form) => save(await api('POST', '/auth/register', form));
 
   return <Ctx.Provider value={{ auth, user: auth && auth.user, login, register, logout }}>{children}</Ctx.Provider>;

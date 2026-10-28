@@ -2,18 +2,14 @@ import { useState } from 'react';
 import { useAuth } from '../context/AuthContext.jsx';
 import { navigate, home } from '../router.js';
 
-// Decorative timetable: highlighted cells hint at booked slots
-const ART = Array.from({ length: 24 }, (_, i) => (i === 2 || i === 9 || i === 20 ? 'hi' : i === 14 ? 'ac' : ''));
-
 function AuthShell({ children }) {
   return (
     <div className="auth-shell">
       <aside className="auth-art">
         <span className="brand"><span className="mark" aria-hidden="true" />Aetherion</span>
-        <div className="art-grid" aria-hidden="true">{ART.map((c, i) => <span key={i} className={c} />)}</div>
         <div className="auth-copy">
-          <h2>Interviews, scheduled without the chaos.</h2>
-          <p>Rank your preferred slots and let the scheduler find the best conflict-free plan for everyone.</p>
+          <h2>Shared thoughts.<br />Connected teams.</h2>
+          <p>Bringing organisation into chaos,<br />one task at a time</p>
         </div>
       </aside>
       <main className="auth-panel">{children}</main>
@@ -21,24 +17,51 @@ function AuthShell({ children }) {
   );
 }
 
+const ROLES = [
+  { key: 'STUDENT', label: 'Student', hint: 'Rank your slots and track your interviews.',
+    icon: <><path d="M22 10 12 5 2 10l10 5 10-5z" /><path d="M6 12v5c3 2 9 2 12 0v-5" /></> },
+  { key: 'INTERVIEWER', label: 'Interviewer', hint: 'Set availability, accept proposals and record results.',
+    icon: <><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /><path d="M8 9h8M8 13h5" /></> },
+  { key: 'COORDINATOR', label: 'Coordinator', hint: 'Run matching, approve schedules and send notices.',
+    icon: <><rect x="3" y="4" width="18" height="18" rx="2" /><path d="M16 2v4M8 2v4M3 10h18M9 16l2 2 4-4" /></> },
+];
+const LABEL = Object.fromEntries(ROLES.map((r) => [r.key, r.label]));
+
 export function LoginPage() {
   const { login } = useAuth();
+  const [role, setRole] = useState('STUDENT');
   const [f, setF] = useState({ email: '', password: '' });
   const [err, setErr] = useState('');
   const [busy, setBusy] = useState(false);
+  const pick = (k) => { setRole(k); setErr(''); };
   const submit = async (e) => {
     e.preventDefault();
     if (busy) return;
     setBusy(true);
-    try { const u = await login(f.email, f.password); navigate(home(u.role)); }
-    catch (x) { setErr((x && x.message) || 'Could not sign in'); }
+    try { const u = await login(f.email, f.password, role); navigate(home(u.role)); }
+    catch (x) {
+      setErr(x && x.code === 'WRONG_ROLE'
+        ? `This account belongs to the ${LABEL[x.role]} gateway. Please choose it above.`
+        : (x && x.message) || 'Could not sign in');
+    }
     finally { setBusy(false); }
   };
+  const current = ROLES.find((r) => r.key === role);
   return (
     <AuthShell>
       <form className="auth-form" onSubmit={submit}>
         <h1>Sign in</h1>
-        <p className="sub">Welcome back! Enter your details below.</p>
+        <div className="title-rule" />
+        <p className="role-label" id="gateway-label">Please select your gateway</p>
+        <div className="role-picker" role="radiogroup" aria-labelledby="gateway-label">
+          {ROLES.map((r) => (
+            <button key={r.key} type="button" role="radio" aria-checked={role === r.key} className="role-card" onClick={() => pick(r.key)}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{r.icon}</svg>
+              {r.label}
+            </button>
+          ))}
+        </div>
+        <p className="role-hint">{current.hint}</p>
         <label>Email address
           <input type="email" required autoComplete="email" placeholder="you@college.edu" value={f.email} onChange={(e) => setF({ ...f, email: e.target.value })} />
         </label>
@@ -46,8 +69,10 @@ export function LoginPage() {
           <input type="password" required autoComplete="current-password" placeholder="Password" value={f.password} onChange={(e) => setF({ ...f, password: e.target.value })} />
         </label>
         {err && <p className="err" role="alert">{err}</p>}
-        <button className="primary" disabled={busy}>{busy ? 'Signing in…' : 'Sign in'}</button>
-        <p className="switch">New student? <a href="#/register">Create an account</a></p>
+        <button className="primary" disabled={busy}>{busy ? 'Signing in…' : `Sign in as ${current.label}`}</button>
+        {role === 'STUDENT'
+          ? <p className="switch">New student? <a href="#/register">Create an account</a></p>
+          : <p className="switch">{current.label} accounts are created by the placement cell.</p>}
       </form>
     </AuthShell>
   );

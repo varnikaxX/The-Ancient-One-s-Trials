@@ -7,9 +7,11 @@ import { useNotifications } from '../context/NotificationContext.jsx';
 export function CoordinatorDashboard() {
   return (
     <Layout>
-      <h1>Coordinator Sanctum</h1>
+      <h1>Welcome Wang!</h1>
       <div className="card">
-        <a href="#/coordinator/matching">Run matching and review drafts</a> · <a href="#/coordinator/notice">Broadcast a notice</a> · <a href="#/coordinator/calendar">Calendar</a>
+        <a href="#/coordinator/matching">Run matching and review drafts</a> <br></br>
+        <a href="#/coordinator/notice">Broadcast a notice</a> <br></br>
+        <a href="#/coordinator/calendar">Calendar</a><br></br>
       </div>
     </Layout>
   );
