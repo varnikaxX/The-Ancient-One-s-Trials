@@ -1,0 +1,74 @@
+{
+  "status": "OPTIMAL",
+  "objectiveValue": -660,
+  "assignments": [
+    {
+      "studentId": 11,
+      "slotId": 2,
+      "rankGot": 3,
+      "interviewerIds": [
+        7
+      ],
+      "roomId": 1
+    },
+    {
+      "studentId": 12,
+      "slotId": 3,
+      "rankGot": 3,
+      "interviewerIds": [
+        7
+      ],
+      "roomId": 1
+    },
+    {
+      "studentId": 13,
+      "slotId": 5,
+      "rankGot": 2,
+      "interviewerIds": [
+        8
+      ],
+      "roomId": 2
+    },
+    {
+      "studentId": 14,
+      "slotId": 6,
+      "rankGot": 2,
+      "interviewerIds": [
+        8
+      ],
+      "roomId": 2
+    },
+    {
+      "studentId": 15,
+      "slotId": 7,
+      "rankGot": 2,
+      "interviewerIds": [
+        8
+      ],
+      "roomId": 2
+    },
+    {
+      "studentId": 16,
+      "slotId": 1,
+      "rankGot": 1,
+      "interviewerIds": [
+        7
+      ],
+      "roomId": 1
+    }
+  ],
+  "unmatched": [
+    {
+      "studentId": 17,
+      "reason": "NO_PREFERENCES"
+    }
+  ],
+  "stats": {
+    "matched": 6,
+    "unmatched": 1,
+    "rank1": 1,
+    "rank2": 3,
+    "rank3": 2,
+    "wallTimeSec": 0.004
+  }
+}
